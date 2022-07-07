@@ -10,7 +10,7 @@ module.exports = async function (fastify, opts) {
 // mysql = {host, port, database, user, password}
   await fastify.register(require('@fastify/mysql'), 
   Object.assign({}, require('./config').mysql, opts.mysql))
-  
+
   fastify.use('/', serveStatic(path.resolve(__dirname, 'public')))
   // Place here your custom code!
 
@@ -23,8 +23,6 @@ module.exports = async function (fastify, opts) {
     dir: path.join(__dirname, 'plugins'),
     options: Object.assign({}, opts)
   })
-
-  
 
   // This loads all plugins defined in routes
   // define your routes in one of these
