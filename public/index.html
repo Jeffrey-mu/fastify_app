@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.0/vue.min.js"></script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.9/theme-chalk/index.css" rel="stylesheet">
+  <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.9/index.js"></script>
+  <style>
+    #app {
+      width: 100vh;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .form {
+      width: 400px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm form">
+      <el-form-item label="username" prop="pass">
+        <el-input type="username" v-model="ruleForm.username" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="Confirm" prop="password">
+        <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="email" prop="email">
+        <el-input v-model.number="ruleForm.email"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">Submit</el-button>
+        <el-button @click="resetForm('ruleForm')">Reset</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        ruleForm: {
+          username: '',
+          password: '',
+          email: ''
+        }, rules: {}
+      },
+      methods: {
+        submitForm: function () {
+          var myInit = {
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            method: 'POST',
+            mode: 'cors',
+            cache: 'default',
+            body: JSON.stringify(this.ruleForm)
+          };
+          var myRequest = new Request('/login');
+          fetch(myRequest, myInit).then(function (response) {
+            return response.json()
+          }).then(res => {
+            console.log(res);
+          })
+        }
+      }
+    }).$mount();
+  </script>
+</body>
+
+</html>
