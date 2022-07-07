@@ -2,13 +2,13 @@
 
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
-const serveStatic = require('serve-static')
 
 module.exports = async function (fastify, opts) {
   await fastify.register(require('@fastify/express'))
   // Single path
-  fastify.use('/', serveStatic(path.join(__dirname, '/static')))
+  const serveStatic = require('serve-static')
 
+  fastify.use('/', serveStatic(path.resolve(__dirname, 'public')))
   // Place here your custom code!
 
   // Do not touch the following lines

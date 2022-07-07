@@ -7,7 +7,7 @@ module.exports = async function (fastify, opts) {
   })
   fastify.get('/user/:id', function (req, reply) {
     mysql.query(
-      'SELECT id, name FROM users WHERE id=?', [req.params.id],
+      'SELECT id FROM users WHERE id=?', [req.params.id],
       function onResult(err, result) {
         reply.send(err || result)
       }
