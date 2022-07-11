@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
-    "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
+    "start": "fastify start -p 8088 -a 0.0.0.0 -l  info app.js",
+    "dev": "fastify start -w -p 8088 -l info -P app.js"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@fastify/express": "^2.0.0",
     "@fastify/mysql": "^4.0.0",
+    "dotenv": "^16.0.1",
     "serve-static": "^1.15.0",
     "tap": "^16.1.0"
   }
