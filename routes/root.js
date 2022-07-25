@@ -36,8 +36,8 @@ module.exports = async function (app, opts) {
         return pre = next
       }, 0)
       returnValue.push({
-        name: dataArray[includeChineseCharacters[len]],
-        data: dataArray.slice(includeChineseCharacters[len], Infinity)
+        name: dataArray[includeChineseCharacters[len-1]],
+        data: dataArray.slice(includeChineseCharacters[len-1], Infinity)
       })
       return returnValue
     }
