@@ -26,6 +26,8 @@
     "@fastify/express": "^2.0.0",
     "@fastify/mysql": "^4.0.0",
     "dotenv": "^16.0.1",
+    "md5": "^2.3.0",
+    "sequelize": "^6.21.3",
     "serve-static": "^1.15.0",
     "tap": "^16.1.0"
   }

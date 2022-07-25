@@ -7,11 +7,7 @@ module.exports = async function (fastify, opts) {
   await fastify.register(require('@fastify/express'))
   // Single path
   const serveStatic = require('serve-static')
-// mysql = {host, port, database, user, password}
-  await fastify.register(require('@fastify/mysql'), 
-  Object.assign({}, require('./config').mysql, opts.mysql))
-
-  fastify.use('/', serveStatic(path.resolve(__dirname, 'public')))
+  // fastify.use('/', serveStatic(path.resolve(__dirname, 'public')))
   // Place here your custom code!
 
   // Do not touch the following lines
