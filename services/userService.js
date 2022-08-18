@@ -7,5 +7,5 @@ async function getLoginUser(req) {
   return currentUser;
 }
 module.exports = {
-  getLoginUser
-}
+  getLoginUser,
+};

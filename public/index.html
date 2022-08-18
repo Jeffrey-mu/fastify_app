@@ -1,117 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
+  <body></body>
 </html>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
-  #app {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .box {
-    margin: 20px;
-    padding: 0;
-    height: 80vh;
-    border: 1px solid #ccc;
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  pre {
-    white-space: pre-wrap;
-    /* css-3 */
-    white-space: -moz-pre-wrap;
-    /* Mozilla, since 1999 */
-    white-space: -pre-wrap;
-    /* Opera 4-6 */
-    white-space: -o-pre-wrap;
-    /* Opera 7 */
-    word-wrap: break-word;
-    /* Internet Explorer 5.5+ */
-    overflow: auto;
-    word-break: break-all;
-    word-wrap: break-word;
-  }
-
-  pre,
-  textarea {
-    outline: none;
-    width: 100%;
-    flex: 1;
-    border: none;
-    padding: 10px;
-  }
-
-  p {
-    text-align: center;
-  }
-</style>
-
-<body>
-  <div id="app">
-    <div class="box">
-      <p>输入</p>
-      <textarea name="" id="textarea" cols="30" rows="10" onchange="change()"></textarea>
-    </div>
-    <div class="box">
-      <p>输出</p>
-      <textarea name="" id="result" cols="30" disabled rows="10"></textarea>
-    </div>
-  </div>
-  <script>
-    function change() {
-      submitForm(document.getElementById("textarea").value)
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
     }
-    function submitForm(value) {
-      var myInit = {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        mode: 'cors',
-        cache: 'default',
-        body: JSON.stringify({
-          data: value
-        })
-      };
-      var myRequest = new Request('/calculation');
-      fetch(myRequest, myInit).then(function (response) {
-        return response.json()
-      }).then(res => {
-        document.getElementById('result').innerHTML = JSON.stringify(res, null, "\t");
-      })
-    }
-  </script>
-</body>
 
+    #app {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .box {
+      margin: 20px;
+      padding: 0;
+      height: 80vh;
+      border: 1px solid #ccc;
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      /* css-3 */
+      white-space: -moz-pre-wrap;
+      /* Mozilla, since 1999 */
+      white-space: -pre-wrap;
+      /* Opera 4-6 */
+      white-space: -o-pre-wrap;
+      /* Opera 7 */
+      word-wrap: break-word;
+      /* Internet Explorer 5.5+ */
+      overflow: auto;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+
+    pre,
+    textarea {
+      outline: none;
+      width: 100%;
+      flex: 1;
+      border: none;
+      padding: 10px;
+    }
+
+    p {
+      text-align: center;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <div class="box">
+        <p>输入</p>
+        <textarea
+          name=""
+          id="textarea"
+          cols="30"
+          rows="10"
+          onchange="change()"
+        ></textarea>
+      </div>
+      <div class="box">
+        <p>输出</p>
+        <textarea name="" id="result" cols="30" disabled rows="10"></textarea>
+      </div>
+    </div>
+    <script>
+      function change() {
+        submitForm(document.getElementById("textarea").value);
+      }
+      function submitForm(value) {
+        var myInit = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          mode: "cors",
+          cache: "default",
+          body: JSON.stringify({
+            data: value,
+          }),
+        };
+        var myRequest = new Request("/calculation");
+        fetch(myRequest, myInit)
+          .then(function (response) {
+            return response.json();
+          })
+          .then((res) => {
+            document.getElementById("result").innerHTML = JSON.stringify(
+              res,
+              null,
+              "\t"
+            );
+          });
+      }
+    </script>
+  </body>
 </html>

@@ -1,26 +1,26 @@
-const dotenv = require('dotenv');
-const path = require('path');
+const dotenv = require("dotenv");
+const path = require("path");
 
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 let envPath;
 
 // validate the NODE_ENV
 const NODE_ENV = process.env.NODE_ENV;
 switch (NODE_ENV) {
-  case 'development':
-    envPath = path.resolve(__dirname, '../.env.development');
+  case "development":
+    envPath = path.resolve(__dirname, "../.env.development");
     break;
-  case 'staging':
-    envPath = path.resolve(__dirname, '../.env.staging');
+  case "staging":
+    envPath = path.resolve(__dirname, "../.env.staging");
     break;
-  case 'production':
-    envPath = path.resolve(__dirname, '../.env.production');
+  case "production":
+    envPath = path.resolve(__dirname, "../.env.production");
     break;
   default:
-    envPath = path.resolve(__dirname, '../.env.local');
+    envPath = path.resolve(__dirname, "../.env.local");
     break;
-};
+}
 
 dotenv.config({ path: envPath });
 

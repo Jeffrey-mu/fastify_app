@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
+    "format": "prettier --write .",
     "start": "fastify start -p 8088 -a 0.0.0.0 -l  info app.js",
     "dev": "fastify start -w -p 8088 -l info -P app.js"
   },
@@ -20,11 +21,13 @@
     "@fastify/static": "^6.4.0",
     "fastify": "^4.0.0",
     "fastify-cli": "^4.3.0",
-    "fastify-plugin": "^3.0.0"
+    "fastify-plugin": "^3.0.0",
+    "prettier": "^2.7.1"
   },
   "devDependencies": {
     "@fastify/express": "^2.0.0",
     "@fastify/mysql": "^4.0.0",
+    "content-disposition": "^0.5.4",
     "dotenv": "^16.0.1",
     "md5": "^2.3.0",
     "sequelize": "^6.21.3",

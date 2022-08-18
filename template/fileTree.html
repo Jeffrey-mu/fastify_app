@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .file_tree_box {
+      width: 80%;
+      height: 80vh;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+
+  <body>
+    <h1>file tree</h1>
+    <input id="input" type="text" placeholder="请输入想要查询的绝对路径" />
+    <button id="submit">查询</button>
+    <div class="file_tree_box"></div>
+  </body>
+
+  <script>
+    let submit = document.querySelector("#submit");
+    submit.addEventListener("click", function (e) {
+      let fileDir = input.value;
+      fetch("/file?fileDir=" + fileDir)
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        });
+    });
+  </script>
+</html>

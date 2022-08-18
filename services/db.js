@@ -25,4 +25,4 @@ sequelize
     console.error("Unable to connect to MySQL", e);
   });
 
-module.exports = sequelize
+module.exports = sequelize;
